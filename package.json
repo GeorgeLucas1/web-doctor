@@ -2,6 +2,7 @@
   "name": "web-doctor",
   "module": "index.ts",
   "type": "module",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "bun run ./index.ts"
@@ -14,5 +15,11 @@
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "cac": "^6.7.14",
+    "htmlparser2": "^10.1.0",
+    "picocolors": "^1.1.1",
+    "postcss": "^8.5.6"
   }
 }
