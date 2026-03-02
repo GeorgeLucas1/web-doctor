@@ -1,6 +1,6 @@
 import type { AstItem } from "./types";
 
-function calcPoints(cssAst: AstItem[]): number {
+function calcCssPoints(cssAst: AstItem[]): number {
 	let points = 10;
 
 	for (let item of cssAst) {
@@ -78,4 +78,4 @@ function isPixelBasedFont(value: string) {
 	return value.includes("px");
 }
 
-export default calcPoints;
+export default calcCssPoints;

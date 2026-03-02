@@ -1,7 +1,7 @@
 import postcss from "postcss";
 import type { AstItem, PropertiesItem } from "./types";
 
-async function parseToAst(path: string): Promise<AstItem[]> {
+async function parseCssToAst(path: string): Promise<AstItem[]> {
 	const code = await Bun.file(path).text();
 	const ast = postcss.parse(code);
 
@@ -26,4 +26,4 @@ async function parseToAst(path: string): Promise<AstItem[]> {
 	return astCssItems;
 }
 
-export default parseToAst;
+export default parseCssToAst;

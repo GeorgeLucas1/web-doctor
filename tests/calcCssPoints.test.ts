@@ -1,6 +1,6 @@
 import { expect, test, describe } from "bun:test";
-import calcPoints from "../../src/css/calcPoints";
-import type { AstItem } from "../../src/css/types";
+import calcCssPoints from "../src/css/calcCssPoints";
+import type { AstItem } from "../src/css/types";
 
 function createMock(
 	selector: string,
@@ -22,7 +22,7 @@ describe("Base Rules", () => {
 			createMock(".my-class", "color", "#fff"),
 			createMock("*", "padding", "false"),
 		];
-		const result = calcPoints(mockCss);
+		const result = calcCssPoints(mockCss);
 		expect(result).toBe(10);
 	});
 });
@@ -32,7 +32,7 @@ describe("Selectors Penalties", () => {
 		const mockCss: AstItem[] = [
 			createMock("#my-id", "color", "#fff")
 		];
-		const result = calcPoints(mockCss);
+		const result = calcCssPoints(mockCss);
 		expect(result).toBe(9);
 	});
 
@@ -40,7 +40,7 @@ describe("Selectors Penalties", () => {
 		const mockCss = [
 			createMock("*", "color", "#fff")
 		];
-		const result = calcPoints(mockCss);
+		const result = calcCssPoints(mockCss);
 		expect(result).toBe(9);
 	});
 
@@ -48,7 +48,7 @@ describe("Selectors Penalties", () => {
 		const mockCss = [
 			createMock("html body main div p", "color", "#fff")
 		];
-		const result = calcPoints(mockCss);
+		const result = calcCssPoints(mockCss);
 		expect(result).toBe(9);
 	});
 
@@ -59,7 +59,7 @@ describe("Selectors Penalties", () => {
 				properties: []
 			}
 		];
-		const result = calcPoints(mockCss);
+		const result = calcCssPoints(mockCss);
 		expect(result).toBe(9);
 	});
 });
@@ -69,7 +69,7 @@ describe("Properties Penalties", () => {
 		const mockCss = [
 			createMock("h1", "color", "#fff", true)
 		];
-		const result = calcPoints(mockCss);
+		const result = calcCssPoints(mockCss);
 		expect(result).toBe(9);
 	});
 
@@ -77,7 +77,7 @@ describe("Properties Penalties", () => {
 		const mockCss = [
 			createMock("button", "outline", "none")
 		];
-		const result = calcPoints(mockCss);
+		const result = calcCssPoints(mockCss);
 		expect(result).toBe(9);
 	});
 
@@ -85,7 +85,7 @@ describe("Properties Penalties", () => {
 		const mockCss = [
 			createMock("h1", "color", "red")
 		];
-		const result = calcPoints(mockCss);
+		const result = calcCssPoints(mockCss);
 		expect(result).toBe(9);
 	});
 
@@ -93,7 +93,7 @@ describe("Properties Penalties", () => {
 		const mockCss = [
 			createMock("p", "font-size", "16px")
 		];
-		const result = calcPoints(mockCss);
+		const result = calcCssPoints(mockCss);
 		expect(result).toBe(9);
 	});
 });
@@ -123,7 +123,7 @@ describe("Edge Cases", () => {
 				properties: []
 			},
 		];
-		const result = calcPoints(mockCss);
+		const result = calcCssPoints(mockCss);
 		expect(result).toBe(0);
 	});
 });

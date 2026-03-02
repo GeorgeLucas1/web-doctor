@@ -17,6 +17,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "acorn": "^8.16.0",
     "cac": "^6.7.14",
     "htmlparser2": "^10.1.0",
     "picocolors": "^1.1.1",
