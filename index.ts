@@ -7,6 +7,8 @@ import parseCssToAst from "./src/css/parseCssToAst";
 import calcCssPoints from "./src/css/calcCssPoints";
 import parseJsToAst from "./src/js/parseJsToAst";
 import calcJsPoints from "./src/js/calcJsPoints";
+import parseHtmlToDom from "./src/html/parseHtmlToDom";
+import calcHtmlPoints from "./src/html/calcHtmlPoints";
 
 const cli = cac("web-doctor");
 
@@ -39,8 +41,14 @@ cli
 					} else if (f.endsWith('.css')) {
 						const cssAst = await parseCssToAst(f);
 						const resultPointsCss = calcCssPoints(cssAst);
-						console.log(`
-							${pc.cyan('🎨 ' + f)} -> ${formatPoints(resultPointsCss)}`
+						console.log(
+							`${pc.cyan('🎨 ' + f)} -> ${formatPoints(resultPointsCss)}`
+						);
+					} else if (f.endsWith('.html')) {
+						const htmlDom = await parseHtmlToDom(f);
+						const resultPointsHtml = calcHtmlPoints(htmlDom);
+						console.log(
+							`${pc.cyan('🎨 ' + f)} -> ${formatPoints(resultPointsHtml)}`
 						);
 					}
 				} catch (e) {
